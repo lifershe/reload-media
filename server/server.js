@@ -1,16 +1,22 @@
-const http = require('http');
+const express = require('express');
+const cors = require('cors');
+const axios = require('axios');
 
-const server = http.createServer((req, res) => {
-  // Set the response header
-  res.writeHead(200, {'Content-Type': 'text/plain'});
+const app = express();
+const port = 3001;
 
-  // Send a response
-  res.end('Hello, World!\n');
+app.use(cors());//test
+
+app.get('/api/restaurants', async (req, res) => {
+  try {
+    const response = await axios.get('https://nextjs-orpin-omega-98.vercel.app/api/restaurants');
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
-const port = process.env.PORT || 3000;
-
-// Start the server and listen on the specified port
-server.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}/`);
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
 });
