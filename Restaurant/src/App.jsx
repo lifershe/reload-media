@@ -10,7 +10,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/api/restaurants"
+          "http://localhost:3001"
         );
         setRestaurants(response.data);
       } catch (error) {
