@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "proxy": "https://nextjs-orpin-omega-98.vercel.app",
+  "proxy": "https://reload-media-server.vercel.app/api/restaurants",
 
   "dependencies": {
     "axios": "^1.6.2",
