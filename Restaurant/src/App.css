@@ -1,0 +1,35 @@
+.container {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.container:hover {
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 2px;
+  border-radius: 5px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.wrapper {
+  padding: 10px;
+}
+
+.cardContainer{
+  display: flex;
+  flex-wrap: wrap;
+  border-left: 1px #ccc solid;
+  margin-left: 20px;
+}
