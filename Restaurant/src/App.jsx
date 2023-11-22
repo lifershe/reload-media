@@ -1,52 +1,25 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import RestaurantCard from "./RestaurantCard";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://reload-media-server-nh2d01dfn-lifershe.vercel.app/api/restaurants"
-        );
-        setRestaurants(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
+    fetch('https://nextjs-orpin-omega-98.vercel.app/api/restaurants')
+      .then((response) => response.json())
+      .then((data) => setRestaurants(data))
+      .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-  // filter restaurants by state
-  const organizedRestaurants = restaurants.reduce((accumulator, restaurant) => {
-    const state = restaurant.state;
-    if (!accumulator[state]) {
-      accumulator[state] = [];
-    }
-    accumulator[state].push(restaurant);
-    return accumulator;
-  }, {});
-
   return (
-    <div className="wrapper">
-      <h1>RESTAURANT FILTERED BY STATE</h1>
-      {Object.keys(organizedRestaurants).map((state) => (
-        <div className="container" key={state}>
-          <h2>{state}</h2>
-          <div className="cardContainer">
-            {organizedRestaurants[state].map((restaurant) => (
-              <RestaurantCard
-                key={restaurant.restaurant_name}
-                name={restaurant.restaurant_name}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
+    <div>
+      <h1>Restaurant List</h1>
+      <ul>
+        {restaurants.map((restaurant, index) => (
+          <li key={index}>
+            <strong>{restaurant.restaurant_name}</strong> - {restaurant.state}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
