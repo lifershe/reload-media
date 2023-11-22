@@ -10,7 +10,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001"
+          "https://reload-media-server-nh2d01dfn-lifershe.vercel.app/"
         );
         setRestaurants(response.data);
       } catch (error) {
