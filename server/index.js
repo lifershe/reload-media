@@ -16,7 +16,7 @@ const port = 3001;
 
 app.use(cors());
 
-app.get('/', async (req, res) => {
+app.get('/api/restaurants', async (req, res) => {
   try {
     const response = await axios.get('https://nextjs-orpin-omega-98.vercel.app/api/restaurants');
     res.json(response.data);
