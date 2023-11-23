@@ -10,8 +10,9 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://0d6f-122-2-97-168.ngrok-free.app/api/restaurants"
+          "http://localhost:3001/api/restaurants"
         );
+        // "https://0d6f-122-2-97-168.ngrok-free.app/api/restaurants"
         setRestaurants(response.data);
       } catch (error) {
         console.error(error);
